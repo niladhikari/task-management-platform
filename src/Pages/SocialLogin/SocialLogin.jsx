@@ -16,7 +16,7 @@ const SocialLogin = () => {
         console.log(res.user.auth.email);
         toast.success(" Successfully Login");
         setTimeout(() => {
-          navigate("/");
+          navigate("/dashboard");
         }, 2000);
         // const user = { email };
         fetch("https://brand-shop-server-vert.vercel.app/user", {

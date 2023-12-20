@@ -3,22 +3,26 @@ import { Link, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 
-const links = (
-  <>
-    <li>
-      <NavLink to="/">Home</NavLink>
-    </li>
-    <li>
-      <NavLink to="/blog"> Blog</NavLink>
-    </li>
-    <li>
-      <NavLink to="/contact">Contact</NavLink>
-    </li>
-  </>
-);
-
 const Navbar = () => {
-    const { user, userSignOut } = useAuth();
+  const { user, userSignOut } = useAuth();
+  const links = (
+    <>
+      <li>
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="/blog"> Blog</NavLink>
+      </li>
+      {user && (
+        <li>
+          <Link to="/dashboard">Dashboard</Link>
+        </li>
+      )}
+      <li>
+        <NavLink to="/contact">Contact</NavLink>
+      </li>
+    </>
+  );
 
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
@@ -119,50 +123,50 @@ const Navbar = () => {
                 </label>
               </div>
 
-
               <div>
-            {user?.email ? (
-              <div className="dropdown dropdown-end">
-                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                  <div className="w-10 rounded-full">
-                    <img
-                      className="bg-slate-500"
-                      src={user.photoURL}
-                      alt={user.displayName}
-                    />
-                  </div>
-                </label>
-                <ul
-                  tabIndex={0}
-                  className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-                >
-                  <li>
-                    <button className="btn btn-sm  btn-ghost">
-                      {user.displayName}
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      onClick={handleLogout}
-                      className="btn btn-sm  btn-ghost font-bold text-red-500"
+                {user?.email ? (
+                  <div className="dropdown dropdown-end">
+                    <label
+                      tabIndex={0}
+                      className="btn btn-ghost btn-circle avatar"
                     >
-                      Logout
+                      <div className="w-10 rounded-full">
+                        <img
+                          className="bg-slate-500"
+                          src={user.photoURL}
+                          alt={user.displayName}
+                        />
+                      </div>
+                    </label>
+                    <ul
+                      tabIndex={0}
+                      className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+                    >
+                      <li>
+                        <button className="btn btn-sm  btn-ghost">
+                          {user.displayName}
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          onClick={handleLogout}
+                          className="btn btn-sm  btn-ghost font-bold text-red-500"
+                        >
+                          Logout
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                ) : (
+                  <Link to="/login">
+                    <button className="btn  p-2 bg-gray-300 text-center font-bold text-green-800">
+                      Login
                     </button>
-                  </li>
-                </ul>
+                  </Link>
+                )}
               </div>
-            ) : (
-              <Link to="/login">
-                <button className="btn  p-2 bg-gray-300 text-center font-bold text-green-800">
-                  Login
-                </button>
-              </Link>
-            )}
-          </div>
             </div>
           </div>
-
-         
         </div>
       </div>
     </div>

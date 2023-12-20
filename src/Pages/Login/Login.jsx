@@ -23,7 +23,7 @@ const Login = () => {
       .then(() => {
         toast.success("Successfully Login");
         setTimeout(() => {
-          navigate(location?.state ? location.state : "/");
+          navigate(location?.state ? location.state : "/dashboard");
         }, 2000);
       })
       .catch((error) => {

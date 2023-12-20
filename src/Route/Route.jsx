@@ -5,6 +5,9 @@ import Blog from './../Pages/Blog/Blog';
 import Contact from "../Pages/Contact/Contact";
 import Login from "../Pages/Login/Login";
 import Register from './../Pages/Register/Register';
+import Dashboard from "../Componets/Dashboard";
+import UserHome from './../Pages/Dashboard/UserHome/UserHome';
+import PrivateRoute from "./PrivateRouter";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +36,17 @@ const router = createBrowserRouter([
         },
     ]
   },
+
+  {
+    path:'dashboard',
+    element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    children:[
+        {
+            path:'userHome',
+            element:<UserHome></UserHome>, 
+        }
+    ]
+  }
 ]);
 
 export default router;
