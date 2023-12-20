@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 
 import { useEffect, useState } from "react";
+import useAuth from "../../../Hooks/useAuth";
 
 const links = (
   <>
@@ -17,7 +18,7 @@ const links = (
 );
 
 const Navbar = () => {
- const user = false;
+    const { user, userSignOut } = useAuth();
 
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
@@ -35,15 +36,15 @@ const Navbar = () => {
     document.querySelector("html").setAttribute("data-theme", localTheme);
   }, [theme]);
 
-//   const handleLogout = () => {
-//     userSignOut()
-//       .then((res) => {
-//         console.log(res);
-//       })
-//       .catch((error) => {
-//         console.error(error);
-//       });
-//   };
+  const handleLogout = () => {
+    userSignOut()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   return (
     <div>
@@ -142,7 +143,7 @@ const Navbar = () => {
                   </li>
                   <li>
                     <button
-                      onClick={'handleLogout'}
+                      onClick={handleLogout}
                       className="btn btn-sm  btn-ghost font-bold text-red-500"
                     >
                       Logout

@@ -4,12 +4,13 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import useAuth from "../../Hooks/useAuth";
 // import useAuth from "../../Hook/useAuth";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
-//   const { createUser, userUpdateProfile } = useAuth();
-//   const navigate = useNavigate();
+  const { createUser, userUpdateProfile } = useAuth();
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -32,31 +33,31 @@ const Register = () => {
       return;
     }
 
-    // createUser(email, password)
-    //   .then((res) => {
-    //     console.log(res.user);
-    //     userUpdateProfile(name, photo).then(() => {
-    //       toast.success("Registration successfully");
-    //       setTimeout(() => {
-    //         navigate("/");
-    //       }, 2000);
-    //     });
-    //     const user = { email };
-    //     fetch("https://brand-shop-server-vert.vercel.app/user", {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify(user),
-    //     })
-    //       .then((res) => res.json())
-    //       .then((data) => {
-    //         console.log(data);
-    //       });
-    //   })
-    //   .catch(() => {
-    //     toast.error("This Email is Already Used");
-    //   });
+    createUser(email, password)
+      .then((res) => {
+        console.log(res.user);
+        userUpdateProfile(name, photo).then(() => {
+          toast.success("Registration successfully");
+          setTimeout(() => {
+            navigate("/");
+          }, 2000);
+        });
+        const user = { email };
+        fetch("https://brand-shop-server-vert.vercel.app/user", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
+      })
+      .catch(() => {
+        toast.error("This Email is Already Used");
+      });
   };
   return (
     <div className="m-auto grid justify-center px-4 pt-20 lg:pt-0 items-center hero min-h-screen bg-base-200 mb-10">

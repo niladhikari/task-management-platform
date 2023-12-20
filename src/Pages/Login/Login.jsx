@@ -1,34 +1,35 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import useAuth from './../../Hooks/useAuth';
 
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-//   const { userSignIn } = useAuth();
-//   const navigate = useNavigate();
-//   const location = useLocation();
+  const { userSignIn } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
   const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log(email, password);
 
-    // userSignIn(email, password)
-    //   .then(() => {
-    //     toast.success("Successfully Login");
-    //     setTimeout(() => {
-    //       navigate(location?.state ? location.state : "/");
-    //     }, 2000);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //     toast.error("Login failed. Please check your email and password.");
-    //   });
+    userSignIn(email, password)
+      .then(() => {
+        toast.success("Successfully Login");
+        setTimeout(() => {
+          navigate(location?.state ? location.state : "/");
+        }, 2000);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Login failed. Please check your email and password.");
+      });
   };
   return (
     <div className="m-auto grid justify-center items-center  pt-20 lg:pt-0 min-h-screen bg-base-200 mb-10 ">
