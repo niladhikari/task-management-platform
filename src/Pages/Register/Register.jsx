@@ -39,7 +39,7 @@ const Register = () => {
         userUpdateProfile(name, photo).then(() => {
           toast.success("Registration successfully");
           setTimeout(() => {
-            navigate("/dashboard");
+            navigate("/dashboard/userHome");
           }, 2000);
         });
         const user = { email };
