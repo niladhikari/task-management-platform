@@ -1,4 +1,5 @@
 import {  FaHome, } from "react-icons/fa";
+import { MdTask } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
@@ -14,6 +15,12 @@ const Dashboard = () => {
             <NavLink to="/dashboard/userHome">
               <FaHome></FaHome>
               User Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/createTask">
+              <MdTask></MdTask>
+              Create Task
             </NavLink>
           </li>
           <div className="divider"></div>

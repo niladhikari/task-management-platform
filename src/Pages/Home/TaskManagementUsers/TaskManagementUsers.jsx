@@ -1,6 +1,14 @@
 import SectionTitle from "../../../Componets/SectionTitle/SectionTitle";
+import { motion } from 'framer-motion';
 
 const TaskManagementUsers = () => {
+
+  const cardVariants = {
+    initial: { opacity: 0, y: -50 },
+    animate: { opacity: 1, y: 0 },
+    whileHover: { scale: 1.05 },
+  };
+
   const users = [
     {
       title: "Project Managers",
@@ -48,17 +56,24 @@ const TaskManagementUsers = () => {
   ];
 
   return (
-    <div className="mt-20">
-         <SectionTitle subHeading="What is Our Client Benefits" heading={'Task Management Users'} />
+     <div className="mt-20">
+      <SectionTitle subHeading="What is Our Client Benefits" heading={'Task Management Users'} />
       <div className="container mx-auto mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 px-3 lg:px-0">
         <div>
           <h2 className="text-2xl font-semibold mb-4 text-center">Types of Users</h2>
           <div className="space-y-4">
             {users.map((user, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg p-6">
+              <motion.div
+                key={index}
+                className="bg-white rounded-lg shadow-lg p-6"
+                variants={cardVariants}
+                initial="initial"
+                animate="animate"
+                whileHover="whileHover"
+              >
                 <h3 className="text-lg font-semibold mb-2">{user.title}</h3>
                 <p className="text-gray-600">{user.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -66,10 +81,17 @@ const TaskManagementUsers = () => {
           <h2 className="text-2xl font-semibold mb-4 text-center">Benefits</h2>
           <div className="space-y-4">
             {benefits.map((benefit, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg p-6">
+              <motion.div
+                key={index}
+                className="bg-white rounded-lg shadow-lg p-6"
+                variants={cardVariants}
+                initial="initial"
+                animate="animate"
+                whileHover="whileHover"
+              >
                 <h3 className="text-lg font-semibold mb-2">{benefit.title}</h3>
                 <p className="text-gray-600">{benefit.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
