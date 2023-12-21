@@ -1,3 +1,5 @@
+import SectionTitle from "../../../Componets/SectionTitle/SectionTitle";
+
 const TaskManagementUsers = () => {
   const users = [
     {
@@ -46,11 +48,11 @@ const TaskManagementUsers = () => {
   ];
 
   return (
-    <div>
-        <h2 className="text-2xl lg:text-3xl font-bold text-teal-500 text-center mt-20">Task Management Platform Users</h2>
+    <div className="mt-20">
+         <SectionTitle subHeading="What is Our Client Benefits" heading={'Task Management Users'} />
       <div className="container mx-auto mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 px-3 lg:px-0">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Types of Users</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-center">Types of Users</h2>
           <div className="space-y-4">
             {users.map((user, index) => (
               <div key={index} className="bg-white rounded-lg shadow-lg p-6">
@@ -61,7 +63,7 @@ const TaskManagementUsers = () => {
           </div>
         </div>
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Benefits</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-center">Benefits</h2>
           <div className="space-y-4">
             {benefits.map((benefit, index) => (
               <div key={index} className="bg-white rounded-lg shadow-lg p-6">

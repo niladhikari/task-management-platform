@@ -5,7 +5,7 @@ const Dashboard = () => {
   return (
     <div className="flex bg-[#F6F6F6]">
       {/* dashboard side bar */}
-      <div className="w-64 min-h-screen bg-orange-400">
+      <div className="w-64 min-h-screen bg-green-200 text-black">
         <h1 className="p-6">
           <span className="font-bold">Task Management</span> <br /> Platform
         </h1>

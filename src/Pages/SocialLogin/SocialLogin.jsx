@@ -19,7 +19,7 @@ const SocialLogin = () => {
           navigate("/dashboard/userHome");
         }, 2000);
         // const user = { email };
-        fetch("https://brand-shop-server-vert.vercel.app/user", {
+        fetch("http://localhost:5000/users", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
