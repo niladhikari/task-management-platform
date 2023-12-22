@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import "./Banner.css";
+import useAuth from "../../../Hooks/useAuth";
 const Banner = () => {
+  const { user } = useAuth();
   return (
     <div className="mt-6 lg:mt-1 max-w-[1300px] mx-auto background py-4 lg:py-0 lg:h-[80vh] grid justify-center items-center">
       <div className=" flex flex-col-reverse lg:flex-row justify-around gap-6 items-center px-6">
@@ -10,9 +12,9 @@ const Banner = () => {
             organizing and tracking assignments across teams and individuals.
           </h2>
           <div className="grid justify-center">
-            <Link to={'/login'}>
+            <Link to={user ? "/dashboard" : "/login"}>
               <button className="btn bg-teal-400 text-xl font-bold mt-9 mx-auto">
-                Let’s Explore
+              Let’s Explore
               </button>
             </Link>
           </div>

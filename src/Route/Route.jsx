@@ -11,11 +11,13 @@ import PrivateRoute from "./PrivateRouter";
 import CreateTask from "../Pages/Dashboard/CreateTask/CreateTask";
 import TodoList from "./../Pages/Dashboard/TodoList/TodoList";
 import UpdateProduct from "../Pages/Dashboard/UpdateProduct/UpdateProduct";
+import Error from "../Pages/Error/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",

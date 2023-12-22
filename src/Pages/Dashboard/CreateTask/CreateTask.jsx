@@ -1,4 +1,3 @@
-import { FaUtensils } from "react-icons/fa";
 import SectionTitle from "../../../Componets/SectionTitle/SectionTitle";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
@@ -95,7 +94,7 @@ const CreateTask = () => {
           </div>
 
           <button className="btn bg-orange-700 text-white mt-3">
-            Add Task <FaUtensils className="ml-4"></FaUtensils>
+            Add Task
           </button>
         </form>
       </div>
