@@ -43,7 +43,7 @@ const Register = () => {
           }, 2000);
         });
         const user = { email };
-        fetch("http://localhost:5000/users", {
+        fetch("http://localhost:5020/users", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
